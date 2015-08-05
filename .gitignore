@@ -1,0 +1,4 @@
+/img/*
+/bower_components/*
+ignore.html
+match.html

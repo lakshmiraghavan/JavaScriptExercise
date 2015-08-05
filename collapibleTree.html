@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <style>
+        .collapse > * {
+            display: none;
+        }
+        .expand > * {
+            display:block;
+        }
+    </style>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var div = document.createElement('div');
+            function recurseTree(temp, parent, depth) {
+                var children = parent.children;
+                ++depth;
+                for (var i = 0, len = children.length; i < len; i++) {
+                    var child = children[i];
+                    var element = document.createElement('div');
+                    element.innerHTML = '&nbsp' + '[+]' + child.tagName;
+                    element.className = 'collapse';
+                    temp.appendChild(element);
+                    recurseTree(element, child, depth);
+                }
+            }
+            recurseTree(div, document.body, 0);
+            document.body.appendChild(div);
+
+            div.addEventListener('click', function(event) {
+                if(event.target.className === "collapse"){
+                    event.target.className = "expand";
+                }
+                else{
+                    event.target.className = "collapse";
+                }
+            });
+
+
+        });
+
+
+    </script>
+</head>
+<body>
+<body>
+    <div>
+        <div>
+            <ul>
+                <li>
+                    <span></span>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</body>
+
+
+
+
+</body>
+</html>
